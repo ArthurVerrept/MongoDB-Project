@@ -2,6 +2,19 @@
 var express = require('express');
 // this is incase you only want to use a part of the package
 var app = express();
+// require mongoose library
+var mongoose = require('mongoose');
+
+// connect with url of database
+mongoose.connect('mongodb://localhost:27017/test')
+// once connected to databse
+.then(() => {
+    console.log('connected to db');
+})
+// if error
+.catch(err => {
+    console.log('not connected to db')
+});
 
 // get request to get something from server
 app.get('/', (req, res)=>{ 
